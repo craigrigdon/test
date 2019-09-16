@@ -1,8 +1,7 @@
 FROM python:2.7-alpine
 
-ENV LANG C.UTF-8
-
-RUN apt-get update && apt-get install -y python-pip
-
+RUN apt-get update -y
+RUN apt-get update -y python-pip
 RUN pip install ckanext-bcdc-apitests
-RUN pytest --pyargs ckanext_bcdc_apitests --junitxml=<report.xml>
+
+CMD pytest --pyargs ckanext_bcdc_apitests --junitxml=<report.xml>
