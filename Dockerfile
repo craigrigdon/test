@@ -8,4 +8,4 @@ WORKDIR /app
 
 RUN pip install bcdc-apitests
 
-CMD ["pytest" "--pyargs bcdc_apitests" "--junitxml=report.xml"]
+CMD pytest --pyargs bcdc_apitests --junitxml=report.xml
