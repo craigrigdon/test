@@ -5,4 +5,7 @@ WORKDIR /app
 FROM gcr.io/distroless/python3
 COPY --from=build-env /app /app
 WORKDIR /app
-CMD ["hello.py", "/etc"]
+
+RUN pip install bcdc-apitests
+
+CMD ["pytest" "--pyargs bcdc_apitests" "--junitxml=report.xml"]
