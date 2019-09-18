@@ -8,4 +8,4 @@ WORKDIR /app
 
 RUN pip install bcdc-apitests-dev
 
-CMD pytest --pyargs bcdc_apitests 
+CMD pytest --pyargs bcdc_apitests
