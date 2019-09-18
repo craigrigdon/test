@@ -6,6 +6,6 @@ FROM gcr.io/distroless/python3
 COPY --from=build-env /app /app
 WORKDIR /app
 
-RUN pip install bcdc-apitests-dev
+RUN pip3 install bcdc-apitests-dev
 
 ENTRYPOINT pytest --pyargs bcdc_apitests
