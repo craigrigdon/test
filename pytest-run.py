@@ -10,10 +10,10 @@ mat_url = 'https://chat-m.pathfinder.gov.bc.ca'
 mat_channel = 'build-and-deploy'
 mat_username = 'ckantest'
 
-#----------Start Process -----------
+# ----------Start Process -----------
 
-#run pytest cmd
-pytest.main(['--pyargs', 'bcdc_apitests', '--md', md_report_path])
+# run pytest cmd
+pytest.main(['--pyargs', 'bcdc_apitests', '--md', 'report.md'])
 
 # cleanup md output and add our env var
 with open(md_report_path, "r") as f:
@@ -31,7 +31,7 @@ inFile = open(md_report_path, 'r')
 contents = inFile.read()
 print(contents)
 
-#------------Send Output to Mattermost-------------
+# ------------Send Output to Mattermost-------------
 # mat_message = BCDC_URL + " Test results coming soon to a Mattermost channel near you."
 mat_message = contents
 
