@@ -44,3 +44,5 @@ mwh.username = mat_username
 
 # send a message to the specified channel
 # mwh.send(mat_message, channel=mat_channel)
+
+print("DONE")
