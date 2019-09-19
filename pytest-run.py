@@ -9,8 +9,6 @@ mat_api_key = str(os.getenv('MATT_API_KEY'))
 mat_url = 'https://chat-m.pathfinder.gov.bc.ca'
 mat_channel = 'build-and-deploy'
 mat_username = 'ckantest'
-# mat_message = BCDC_URL + " Test results coming soon to a Mattermost channel near you."
-mat_message = contents
 
 #----------Start Process -----------
 
@@ -34,6 +32,8 @@ contents = inFile.read()
 print(contents)
 
 #------------Send Output to Mattermost-------------
+# mat_message = BCDC_URL + " Test results coming soon to a Mattermost channel near you."
+mat_message = contents
 
 # mandatory parameters are url and your webhook API key
 mwh = Webhook(mat_url, mat_api_key)
