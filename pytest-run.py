@@ -12,21 +12,24 @@ mat_channel = 'build-and-deploy'
 mat_username = 'ckantest'
 
 # ----------Start Process -----------
-
+print("start")
 # run pytest cmd
 pytest.main(['--pyargs', 'bcdc_apitests', '--md', 'report.md'])
 
+print("update-output")
 # cleanup md output and add our env var
 with open(md_report_path, "r") as f:
     modified_output=[]
     for line in f.readlines():
         modified_output.append(line.replace(find_str, bcdc_url))
 
+print("write-file")
 # re-write file.
 with open(md_report_path, "w") as f:
     for line in modified_output:
         f.writelines(line)
 
+print("get-output")
 # read file and store
 inFile = open(md_report_path, 'r')
 contents = inFile.read()
@@ -42,6 +45,7 @@ mwh = Webhook(mat_url, mat_api_key)
 # personalized bot name
 mwh.username = mat_username
 
+print("share-output")
 # send a message to the specified channel
 # mwh.send(mat_message, channel=mat_channel)
 
