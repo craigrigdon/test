@@ -42,4 +42,4 @@ mwh = Webhook(mat_url, mat_api_key)
 mwh.username = mat_username
 
 # send a message to the specified channel
-mwh.send(mat_message, channel=mat_channel)
+# mwh.send(mat_message, channel=mat_channel)
