@@ -5,6 +5,6 @@ WORKDIR /app
 RUN pip install bcdc-apitests-dev
 RUN pip install matterhook
 
-COPY pytest_run.py .
+COPY pytest-run.py .
 
-ENTRYPOINT [ "python", "./pytest_run.py" ]
+ENTRYPOINT [ "python", "./pytest-run.py" ]
