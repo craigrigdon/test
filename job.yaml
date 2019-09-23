@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test-job
+spec:
+  parallelism: 1
+  completions: 1
+  template:
+    metadata:
+      name: test-job
+    spec:
+      containers:
+        - env:
+            - name: BCDC_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: BCDC_URL
+                  name: cadi-bcdc-url
+            - name: BCDC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: BCDC_API_KEY
+                  name: cadi-bcdc-api-key
+            - name: BCDC_TMP_USER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: BCDC_API_KEY
+                  name: cadi-bcdc-api-key
+            - name: MATT_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: MATT_API_KEY
+                  name: mattermost-bot-api-key
+            image: >-
+              docker-registry.default.svc:5000/databcdc/test@sha256:0375cebb06452bcdeee79bf9ea14a12ea2caa97060c16d58437fb98beae12241
+            imagePullPolicy: Always
+            name: test
+      restartPolicy: Never
