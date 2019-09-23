@@ -1,6 +1,5 @@
 import os
 import pytest
-import sys
 from matterhook import Webhook
 from tempfile import NamedTemporaryFile
 
@@ -58,4 +57,3 @@ mwh.send(mat_message, channel=mat_channel)
 
 print("DONE")
 
-sys.exit(0)
