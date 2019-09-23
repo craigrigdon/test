@@ -31,8 +31,7 @@ spec:
                 secretKeyRef:
                   key: MATT_API_KEY
                   name: mattermost-bot-api-key
-            image: >-
-              docker-registry.default.svc:5000/databcdc/test@sha256:0375cebb06452bcdeee79bf9ea14a12ea2caa97060c16d58437fb98beae12241
+            image: test
             imagePullPolicy: Always
             name: test
       restartPolicy: Never
