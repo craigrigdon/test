@@ -1,9 +1,15 @@
 import os
-import pytest
-from matterhook import Webhook
+# import pytest
+# from matterhook import Webhook
+from tempfile import NamedTemporaryFile
+
+# create tempfile
+f = NamedTemporaryFile() # this is file object you will read from
+temp_filename = f.name
+print(temp_filename)
 
 # md_report_path = (os.getcwd()) + '/report.md'
-md_report_path = './report.md'
+md_report_path = temp_filename
 find_str = "[pytest-md]: https://github.com/hackebrot/pytest-md"
 bcdc_url = str(os.getenv('BCDC_URL'))
 mat_api_key = str(os.getenv('MATT_API_KEY'))
