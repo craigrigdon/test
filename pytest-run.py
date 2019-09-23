@@ -1,6 +1,6 @@
 import os
-# import pytest
-# from matterhook import Webhook
+import pytest
+from matterhook import Webhook
 from tempfile import NamedTemporaryFile
 
 # create tempfile
