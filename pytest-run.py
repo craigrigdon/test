@@ -4,11 +4,11 @@ from matterhook import Webhook
 from tempfile import NamedTemporaryFile
 
 # create tempfile
-f = NamedTemporaryFile() # this is file object you will read from
+f = NamedTemporaryFile()
 temp_filename = f.name
 print(temp_filename)
 
-# md_report_path = (os.getcwd()) + '/report.md'
+
 md_report_path = temp_filename
 find_str = "[pytest-md]: https://github.com/hackebrot/pytest-md"
 bcdc_url = str(os.getenv('BCDC_URL'))
@@ -53,6 +53,6 @@ mwh.username = mat_username
 
 print("share-output")
 # send a message to the specified channel
-# mwh.send(mat_message, channel=mat_channel)
+mwh.send(mat_message, channel=mat_channel)
 
 print("DONE")
