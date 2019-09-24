@@ -1,7 +1,7 @@
 - apiVersion: batch/v1
   kind: Job
   metadata:
-    name: ktest-job
+    name: test-job
   spec:
     template:
       metadata:
