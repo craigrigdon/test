@@ -18,10 +18,14 @@ mat_url = 'https://chat-m.pathfinder.gov.bc.ca'
 mat_channel = 'build-and-deploy'
 mat_username = 'ckantest'
 
+def handler(signum, frame):
+    print ('Signal handler called with signal', signum)
+    raise IOError("error found cant signal!")
+
 # ----------Start Process -----------
 print("start")
 # run pytest cmd
-pytest.main(['--pyargs', 'bcdc_apitests', '--emoji', '-v', '--md', md_report_path])
+pytest.main(['-v', '--tb=line', '--pyargs', 'bcdc_apitests', '--md', md_report_path])
 
 print("update-output")
 # cleanup md output and add our env var
@@ -58,6 +62,6 @@ mwh.send(mat_message, channel=mat_channel)
 
 print("DONE")
 print("Signaling")
-signal.signal(signal.SIGINT)
-signal.signal(signal.SIGTERM)
+signal.signal(signal.SIGINT, handler)
+signal.signal(signal.SIGTERM, handler)
 
