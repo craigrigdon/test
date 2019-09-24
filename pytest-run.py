@@ -30,7 +30,8 @@ def exit_gracefully(signumber, frame):
 # ----------Start Process -----------
 print("start")
 # run pytest cmd
-pytest.main(['-v', '--tb=line', '--pyargs', 'bcdc_apitests', '--md', md_report_path])
+# pytest.main(['-v', '--tb=line', '--pyargs', 'bcdc_apitests', '--md', md_report_path])
+pytest.main(['--tb=line', '--pyargs', 'bcdc_apitests', '--md', md_report_path])
 
 print("update-output")
 # cleanup md output and add our env var
