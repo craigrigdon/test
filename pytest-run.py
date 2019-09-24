@@ -21,7 +21,7 @@ mat_username = 'ckantest'
 # ----------Start Process -----------
 print("start")
 # run pytest cmd
-pytest.main(['--pyargs', 'bcdc_apitests', '--verbose', '--emoji', '--md', md_report_path])
+pytest.main(['--pyargs', 'bcdc_apitests', '-v', '--emoji', '--md', md_report_path])
 
 print("update-output")
 # cleanup md output and add our env var
