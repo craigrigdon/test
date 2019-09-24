@@ -4,7 +4,6 @@ WORKDIR /app
 
 RUN pip install bcdc-apitests-dev
 RUN pip install matterhook
-RUN pip install pytest-emoji
 
 COPY pytest-run.py .
 

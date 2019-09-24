@@ -1,6 +1,7 @@
 import os
 import pytest
 import signal
+import sys
 from matterhook import Webhook
 from tempfile import NamedTemporaryFile
 
@@ -18,9 +19,13 @@ mat_url = 'https://chat-m.pathfinder.gov.bc.ca'
 mat_channel = 'build-and-deploy'
 mat_username = 'ckantest'
 
-def handler(signum, frame):
-    print ('Signal handler called with signal', signum)
-    raise IOError("error found cant signal!")
+# def handler(signum, frame):
+#     print ('Signal handler called with signal', signum)
+#     raise IOError("error found cant signal!")
+
+def exit_gracefully(signumber, frame):
+  print("Received signal", signumber, "cleaning up...")
+  sys.exit(0)
 
 # ----------Start Process -----------
 print("start")
@@ -62,6 +67,9 @@ mwh.send(mat_message, channel=mat_channel)
 
 print("DONE")
 print("Signaling")
-signal.signal(signal.SIGINT, handler)
-signal.signal(signal.SIGTERM, handler)
+# signal.signal(signal.SIGINT, handler)
+# signal.signal(signal.SIGTERM, handler)
+
+signal.signal(signal.SIGTERM, exit_gracefully)
+
 
