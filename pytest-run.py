@@ -1,6 +1,6 @@
 import os
 import pytest
-import sys
+import signal
 from matterhook import Webhook
 from tempfile import NamedTemporaryFile
 
@@ -57,6 +57,7 @@ print("share-output")
 mwh.send(mat_message, channel=mat_channel)
 
 print("DONE")
-
-sys.exit(0)
+print("Signaling")
+signal.signal(signal.SIGINT)
+signal.signal(signal.SIGTERM)
 
