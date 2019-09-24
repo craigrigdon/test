@@ -10,25 +10,4 @@
         containers:
         - name: test-job
           image: docker-registry.default.svc:5000/databcdc/test
-          env:
-            - name: BCDC_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: BCDC_URL
-                  name: cadi-bcdc-url
-            - name: BCDC_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  key: BCDC_API_KEY
-                  name: cadi-bcdc-api-key
-            - name: BCDC_TMP_USER_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  key: BCDC_API_KEY
-                  name: cadi-bcdc-api-key
-            - name: MATT_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  key: MATT_API_KEY
-                  name: mattermost-bot-api-key
         restartPolicy: Never
