@@ -3,9 +3,6 @@
   metadata:
     name: testjob
   spec:
-    template: testjob
-      metadata:
-        name: testjob
       spec:
         containers:
         - name: testjob
