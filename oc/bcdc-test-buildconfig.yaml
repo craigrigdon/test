@@ -17,7 +17,7 @@ spec:
       WORKDIR /app
       RUN pip install bcdc-apitests-dev
       RUN pip install matterhook
-      RUN wget https://raw.githubusercontent.com/crigdongov/test/master/pytest-run.py
+      RUN wget -r https://raw.githubusercontent.com/crigdongov/test/master/pytest-run.py
       ENTRYPOINT [ "python", "./pytest-run.py" ]
     type: Dockerfile
   strategy:
