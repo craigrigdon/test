@@ -5,7 +5,7 @@ metadata:
 spec:
   template:
     metadata:
-      name: test-job
+      generateName: test-job
     spec:
       containers:
       - name: test-job
