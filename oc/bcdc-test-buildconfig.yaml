@@ -18,9 +18,9 @@ spec:
       RUN pip install bcdc-apitests-dev
       RUN pip install matterhook
       ADD https://raw.githubusercontent.com/crigdongov/test/master/pytest-run.py ./pytest-run.py
-      RUN ["chmod", "+x", "./pytest-run.py"]
+      RUN ["chmod", "755", "/app/pytest-run.py"]
       RUN ["ls","-la"]
-      ENTRYPOINT [ "python", "./pytest-run.py" ]
+      ENTRYPOINT [ "python", "/app/pytest-run.py" ]
     type: Dockerfile
   strategy:
     dockerStrategy:
