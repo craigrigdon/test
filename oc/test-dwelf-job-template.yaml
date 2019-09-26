@@ -6,14 +6,14 @@ objects:
 - apiVersion: batch/v1
   kind: Job
   metadata:
-    generateName: test-job
+    generateName: test-dwelf
   spec:
     template:
       metadata:
-        name: test-job
+        name: test-dwelf
       spec:
         containers:
-        - name: test-job
+        - name: test-dwelf
           image: docker-registry.default.svc:5000/databcdc/bcdc-test
           env:
             - name: BCDC_URL
