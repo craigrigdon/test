@@ -14,7 +14,7 @@ objects:
       spec:
         containers:
         - name: test-job
-          image: docker-registry.default.svc:5000/databcdc/test
+          image: docker-registry.default.svc:5000/databcdc/bcdc-test
           env:
             - name: BCDC_URL
               valueFrom:
