@@ -15,23 +15,44 @@ mat_channel = 'build-and-deploy'
 mat_username = 'ckantest'
 
 
-# ----------Start Process -----------
+# ---------- Start Process ------------
+
 #TODO: try catch here
 print("Run pytest")
 # run pytest cmd
 pytest.main(['-v', '--tb=line', '--pyargs', 'bcdc_apitests', '--md', md_report_path,
              ('--junitxml={0}'.format(xml_report_path)), ('--json={0}'.format(json_report_path))])
 
-
-# ------------ Check Outputs --------------------
+# ---------- Check XML Output ----------
 
 print("Check xml output")
 print(open(xml_report_path).read())
+
+# ---------- Check JSON Output ----------
 print("Check json output")
 with open(json_report_path, 'r') as f:
     json_report = json.load(f)
 print(json.dumps(json_report, indent=4, sort_keys=True))
 
+
+# testing other outputs
+# playing around with creating custom outputs. testing for now.
+tests = json_report['report']['tests']
+print(tests)
+for test in tests:
+    result = test['name'] + test['outcome']
+    print(result)
+
+# check summary for errors or failed, then set if pass/fail to use later.
+# currently set to Fail if any errors or failed.
+summary = json_report['report']['summary']
+print(summary)
+if 'error' or 'failed' in summary:
+    print('Failed')
+    pass_all = False
+else:
+    print('Passed')
+    pass_all = True
 
 # ---------- Update Markdown File ----------------
 
@@ -40,7 +61,11 @@ print("update markdown output")
 with open(md_report_path, "r") as f:
     modified_output = []
     lines = f.readlines()
-    lines[0] = "Pass/Fail.\n"
+    if pass_all:
+        lines[0] = "## Passed\n"
+    else:
+        lines[0] = "## Failed\n"
+
     for line in lines:
         modified_output.append(line.replace(find_str, bcdc_url))
 
