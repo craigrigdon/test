@@ -12,7 +12,7 @@ bcdc_url = str(os.getenv('BCDC_URL'))
 mat_api_key = str(os.getenv('MATT_API_KEY'))
 mat_url = 'https://chat-m.pathfinder.gov.bc.ca'
 mat_channel = 'build-and-deploy'
-mat_username = 'ckantest'
+mat_username = 'BCDC-Test'
 
 
 # ---------- Start Process ------------
@@ -95,7 +95,7 @@ mwh.username = mat_username
 #TODO: try catch here
 print("Sending output")
 # send a message to the specified channel
-# mwh.send(mat_message, channel=mat_channel)
+mwh.send(mat_message, channel=mat_channel)
 
 print("DONE")
 
