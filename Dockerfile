@@ -4,6 +4,7 @@ WORKDIR /app
 
 RUN pip install bcdc-apitests-dev
 RUN pip install matterhook
+RUN pip install pytest-json
 
 COPY pytest-run.py .
 
