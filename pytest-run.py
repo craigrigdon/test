@@ -3,17 +3,10 @@ import pytest
 import sys
 import json
 from matterhook import Webhook
-from tempfile import NamedTemporaryFile
 
-# # create tempfile
-# f = NamedTemporaryFile()
-# temp_filename = f.name
-# print(temp_filename)
-
-
-md_report_path = "/tmp/md report.md"
-xml_report_path = "/tmp/xml report.xml"
-json_report_path = "/tmp/json report.json"
+md_report_path = "/tmp/md-report.md"
+xml_report_path = "/tmp/xml-report.xml"
+json_report_path = "/tmp/json-report.json"
 find_str = "[pytest-md]: https://github.com/hackebrot/pytest-md"
 bcdc_url = str(os.getenv('BCDC_URL'))
 mat_api_key = str(os.getenv('MATT_API_KEY'))
