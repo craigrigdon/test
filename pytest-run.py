@@ -18,6 +18,7 @@ mat_username = 'BCDC-Test'
 
 try:
     # run pytest cmd
+    #add '-v' to add tbs to md report.
     pytest.main(['--tb=line', '--pyargs', 'bcdc_apitests', '--md', md_report_path,
                  ('--junitxml={0}'.format(xml_report_path)), ('--json={0}'.format(json_report_path))])
     print("Running pytest")
