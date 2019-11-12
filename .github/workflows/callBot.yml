@@ -1,0 +1,14 @@
+name: callBot
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: |
+        curl -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.pipeline-Bot-Key }}" -d "$GITHUB_EVENT_PATH" https://bcdc-pipeline-bot.api.gov.bc.ca
