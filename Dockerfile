@@ -2,9 +2,9 @@ FROM python:3-slim
 ADD . /app
 WORKDIR /app
 
-RUN pip install bcdc-apitests-dev
+RUN pip install pypandoc
+RUN pip install --upgrade --force-reinstall bcdc-apitests-dev
 RUN pip install matterhook
-RUN pip install pytest-json
 
 COPY pytest-run.py .
 

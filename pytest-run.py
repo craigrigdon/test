@@ -53,12 +53,20 @@ try:
     # currently set to Fail if any errors or failed.
     summary = json_report['report']['summary']
     print(summary)
-    if 'error' or 'failed' in summary:
+
+    if "error" or "failed" in summary.keys():
         print('Failed')
         pass_all = False
     else:
         print('Passed')
         pass_all = True
+
+    # if "xfailed" in summary.keys():
+    #     print('Failed')
+    #     pass_all = False
+    # else:
+    #     print('Passed')
+    #     pass_all = True
 
     # ---------- Update Markdown File ----------------
 
