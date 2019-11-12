@@ -11,4 +11,4 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run a one-line script
       run: |
-        curl -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" -d "$GITHUB_EVENT_PATH" https://bcdc-pipeline-bot.api.gov.bc.ca/hubot/github
+        curl -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" -d $GITHUB_EVENT_PATH https://bcdc-pipeline-bot.api.gov.bc.ca/hubot/github
