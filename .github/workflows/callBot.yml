@@ -15,4 +15,4 @@ jobs:
         curl -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" -d @$GITHUB_EVENT_PATH https://${{ secrets.BOT_URL }}/hubot/github
     - name: copy payload for testing
       run: |
-        copy $GITHUB_EVENT_PATH /github/workflow/payload.json
+        cp $GITHUB_EVENT_PATH /github/workflow/payload.json
