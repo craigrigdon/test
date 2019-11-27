@@ -14,4 +14,4 @@ jobs:
         echo $GITHUB_EVENT_PATH
         PAYLOAD= cat $GITHUB_EVENT_PATH | jq '. + {"envKey": "dev"}'
         echo $PAYLOAD
-        curl -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" -d "$PAYLOAD" https://${{ secrets.BOT_URL }}/hubot/github
+        curl -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" -d '$PAYLOAD' https://${{ secrets.BOT_URL }}/hubot/github
