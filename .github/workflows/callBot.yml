@@ -12,8 +12,8 @@ jobs:
     - name: Build Payload
       run: |
         echo $GITHUB_EVENT_PATH
-        PAYLOAD= cat $GITHUB_EVENT_PATH | jq '. + {"envKey": "dev"}'
+        PAYLOAD= "$(cat $GITHUB_EVENT_PATH | jq '. + {"envKey": "dev"}')"
         echo $PAYLOAD
     - name: Call Bot
       run: |
-        curl -d =$PAYLOAD -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" https://${{ secrets.BOT_URL }}/hubot/github
+        curl -d $PAYLOAD -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" https://${{ secrets.BOT_URL }}/hubot/github
