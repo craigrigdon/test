@@ -14,7 +14,7 @@ jobs:
         PAYLOAD=$(cat '/home/runner/work/_temp/_github_workflow/event.json' | jq --arg envKey dev '. + {envKey: $envKey}')
         echo $PAYLOAD
 
-        ::set-env name=bob::$PAYLOAD"
+        ::set-env name=bob::cat '/home/runner/work/_temp/_github_workflow/event.json' | jq --arg envKey dev '. + {envKey: $envKey}'"
     - name: Call Bot
       run: |
         echo $bob
