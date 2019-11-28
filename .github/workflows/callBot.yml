@@ -16,4 +16,4 @@ jobs:
         echo $PAYLOAD
     - name: Call Bot
       run: |
-        curl -d $PAYLOAD -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" https://${{ secrets.BOT_URL }}/hubot/github
+        curl -d "$Payload" -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" https://${{ secrets.BOT_URL }}/hubot/github
