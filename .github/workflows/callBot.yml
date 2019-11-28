@@ -12,7 +12,7 @@ jobs:
     - name: Build Payload
       run: |
         echo $GITHUB_EVENT_PATH
-        EVENT= jq $GITHUB_EVENT_PATH
+        EVENT= jq '.' $GITHUB_EVENT_PATH
         echo $EVENT
         PAYLOAD= "$($EVENT | jq '. + {"envKey": "dev"}')"
         echo $PAYLOAD
