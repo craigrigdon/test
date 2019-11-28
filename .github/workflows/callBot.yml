@@ -12,11 +12,9 @@ jobs:
     - name: Build Payload
       run: |
         echo $GITHUB_EVENT_PATH
-        PAYLOAD=$(cat $GITHUB_EVENT_PATH | jq -S '. + {"envKey": "dev"}')
-        echo $PAYLOAD
+        JSON=$(jq --slurpfile $GITHUB_EVENT_PATH)
+        echo $JSON
 
-        PAYLOAD=$(cat $GITHUB_EVENT_PATH)
-        echo $PAYLOAD
-        PAYLOAD=$(jq --slurpfile $GITHUB_EVENT_PATH --arg envKey dev '. + {envKey: $envKey}')
+        PAYLOAD=$($JSON | jq --arg envKey dev '. + {envKey: $envKey}')
         echo $PAYLOAD
         curl -d $PAYLOAD -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" https://${{ secrets.BOT_URL }}/hubot/test
