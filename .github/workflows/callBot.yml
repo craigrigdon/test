@@ -13,9 +13,7 @@ jobs:
       run: |
         PAYLOAD=$(cat '/home/runner/work/_temp/_github_workflow/event.json' | jq --arg envKey dev '. + {envKey: $envKey}')
         echo $PAYLOAD
-
-        ::set-env name=bob::cat '/home/runner/work/_temp/_github_workflow/event.json' | jq --arg envKey dev '. + {envKey: $envKey}'"
     - name: Call Bot
       run: |
-        echo $bob
-        curl -d $bob -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" https://${{ secrets.BOT_URL }}/hubot/github
+        echo $PAYLOAD
+        curl -d $PAYLOAD -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" https://${{ secrets.BOT_URL }}/hubot/github
