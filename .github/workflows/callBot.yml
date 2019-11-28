@@ -13,7 +13,7 @@ jobs:
       run: |
         echo $GITHUB_EVENT_PATH
         EVENT="$(cat $GITHUB_EVENT_PATH )"
-        PAYLOAD= "$(EVENT | jq '. + {"envKey": "dev"}')"
+        PAYLOAD= "$($EVENT | jq '. + {"envKey": "dev"}')"
         echo $PAYLOAD
     - name: Call Bot
       run: |
