@@ -19,4 +19,4 @@ jobs:
         echo $PAYLOAD
         echo $PAYLOAD | jq --arg envKey dev '. + {envKey: $envKey}'
 
-        curl -d '$PAYLOAD' -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" https://${{ secrets.BOT_URL }}/hubot/test
+        curl -d @$GITHUB_EVENT_PATH -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" https://${{ secrets.BOT_URL }}/hubot/test
