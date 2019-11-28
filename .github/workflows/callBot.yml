@@ -11,10 +11,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build Payload
       run: |
-        echo $GITHUB_EVENT_PATH
-        JSON=$(jq -f '/home/runner/work/_temp/_github_workflow/event.json')
-        echo $JSON
-
-        PAYLOAD=$($JSON |jq --arg envKey dev '. + {envKey: $envKey}')
+        PAYLOAD=$(cat '/home/runner/work/_temp/_github_workflow/event.json' |jq --arg envKey dev '. + {envKey: $envKey}')
         echo $PAYLOAD
-        curl -d $PAYLOAD -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" https://${{ secrets.BOT_URL }}/hubot/github
+        curl -d '$PAYLOAD' -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" https://${{ secrets.BOT_URL }}/hubot/github
