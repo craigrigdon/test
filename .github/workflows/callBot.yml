@@ -12,7 +12,8 @@ jobs:
     - name: Build Payload
       run: |
         echo $GITHUB_EVENT_PATH
-        PAYLOAD= "$($GITHUB_EVENT_PATH | jq '. + {"envKey": "dev"}')"
+        EVENT="$(cat $GITHUB_EVENT_PATH )"
+        PAYLOAD= "$(EVENT | jq '. + {"envKey": "dev"}')"
         echo $PAYLOAD
     - name: Call Bot
       run: |
