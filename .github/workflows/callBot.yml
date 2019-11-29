@@ -11,6 +11,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build Payload
       run: |
-        ENVKEY= "dev"
+        ENVKEY="dev"
         curl -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" -d @$GITHUB_EVENT_PATH https://${{ secrets.BOT_URL }}/hubot/github/$ENVKEY
 
