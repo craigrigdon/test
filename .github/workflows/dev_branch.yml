@@ -1,4 +1,4 @@
-name: callBot
+name: dev_push
 
 on:
   push:
