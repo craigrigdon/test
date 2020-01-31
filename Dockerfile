@@ -2,10 +2,13 @@ FROM python:3-slim
 ADD . /app
 WORKDIR /app
 
-RUN pip install pypandoc
-RUN pip install --upgrade --force-reinstall bcdc-apitests-dev
+RUN apt-get update
+RUN apt-get -y install git
 RUN pip install matterhook
+RUN pip install requests
+RUN git clone https://github.com/craigrigdon/test.git
 
-COPY pytest-run.py .
+RUN pwd
+RUN ls -l
 
-ENTRYPOINT [ "python", "./pytest-run.py" ]
+ENTRYPOINT [ "python", "./data-run.py" ]
