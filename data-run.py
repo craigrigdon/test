@@ -29,30 +29,27 @@ try:
     # TEST DATA ONLY - for DEMO
     status = "success"
     bcdc_url = "test"
-    results = "Test migration Only"
+    results = "BCDC Data Migration Test Completed"
     id = deploy_uid
 
-
     # ------------Send Output to Hubot ------------------
-    # TODO: try catch and update payload to be full test json output.
+
     print("Sending Output to Hubot")
     botPath = bot_url+'/hubot/postdeploy'
     print(botPath)
     response = requests.post(
         botPath,
         headers={'Content-Type': 'application/json', 'apikey': bot_key},
-        json={"status": status, "env": bcdc_url, "results": summary, "id": deploy_uid}
+        json={"status": status, "env": bcdc_url, "results": results, "id": deploy_uid}
     )
     print(response)
 
     # ------------Send Output to Mattermost-------------
 
     # get message to send
-    mat_message = markdown
-
+    mat_message = results
     # mandatory parameters are url and your webhook API key
     mwh = Webhook(mat_url, mat_api_key)
-
     # personalized bot name
     mwh.username = mat_username
 
