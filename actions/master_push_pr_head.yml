@@ -1,7 +1,7 @@
-name: master_pull_request
+name: master_push_pr_head
 
 on:
-  pull_request:
+  push:
     branches:
       - master
 
@@ -14,5 +14,5 @@ jobs:
         ref: ${{ github.event.pull_request.head.sha }}
     - name: Send Payload
       run: |
-        curl -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" -d @$GITHUB_EVENT_PATH https://${{ secrets.BOT_URL }}/hubot/github/
+        curl -X POST -H "Content-Type: application/json" -H "apikey: ${{ secrets.BOT_KEY }}" -d @$GITHUB_EVENT_PATH https://${{ secrets.BOT_URL }}/hubot/github/stage
 
