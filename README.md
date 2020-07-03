@@ -1,3 +1,3 @@
 # test
 repo to test local docker build. will to be removed
-go bot go 22
+go bot go 223
