@@ -14,5 +14,5 @@ jobs:
         ref: dev
     - name: Send Payload
       run: |
-        curl -H "X-GitHub-Event: push" -H "Content-Type: application/json" -X POST -d @$GITHUB_EVENT_PATH ${{ secrets.WEBHOOK_URL }}
+        curl -H "Content-Type: application/json" -X POST -d @$GITHUB_EVENT_PATH ${{ secrets.WEBHOOK_URL }}
 
